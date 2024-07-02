@@ -1,0 +1,9 @@
+install node js\
+
+node -v
+
+1. npx create-react-app 01tut
+
+npm start -> to run app
+
+ctrl+alt+R    , rafce  to get code for new functional component
