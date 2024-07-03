@@ -7,3 +7,5 @@ node -v
 npm start -> to run app
 
 ctrl+alt+R    , rafce  to get code for new functional component
+
+npm i react-icons --save-prod     -> save the icons in production dependency
