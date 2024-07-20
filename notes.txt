@@ -9,3 +9,9 @@ npm start -> to run app
 ctrl+alt+R    , rafce  to get code for new functional component
 
 npm i react-icons --save-prod     -> save the icons in production dependency
+
+
+
+JSON SERVER
+
+ npx json-server -p 3500 -w data/db.json
