@@ -3,12 +3,26 @@ import SearchItem from './SearchItem';
 import AddItem from './AddItems';
 import Content from './Content';
 import Footer from './Footer';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 
 function App() {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')));
+
+
   const [newItem, setNewItem] = useState('')
   const [search, setSearch] = useState('')
+
+  // useEffect(() =>{
+  //   console.log("render")
+  // })  // render at every time as input given
+  // useEffect(() =>{
+  //   console.log("load time")
+  // },[])   // render at load time
+
+
+  useEffect(() =>{
+    console.log("updating items")     // executed at load time n when items changed  i,e   when dependency changed  , it is specified in []
+  },[items]) 
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
