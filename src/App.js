@@ -6,44 +6,36 @@ import Footer from './Footer';
 import { useState , useEffect} from 'react';
 
 function App() {
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')));
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist') || []));
 
 
   const [newItem, setNewItem] = useState('')
   const [search, setSearch] = useState('')
 
-  // useEffect(() =>{
-  //   console.log("render")
-  // })  // render at every time as input given
-  // useEffect(() =>{
-  //   console.log("load time")
-  // },[])   // render at load time
+  
 
 
   useEffect(() =>{
-    console.log("updating items")     // executed at load time n when items changed  i,e   when dependency changed  , it is specified in []
+    localStorage.setItem('shoppinglist', JSON.stringify(items));
   },[items]) 
 
-  const setAndSaveItems = (newItems) => {
-    setItems(newItems);
-    localStorage.setItem('shoppinglist', JSON.stringify(newItems));
-  }
+
 
   const addItem = (item_) => {
     const id_ = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id :id_, checked: false, item :item_};
     const listItems = [...items, myNewItem];
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleCheck = (id) => {
     const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleDelete = (id) => {
     const listItems = items.filter((item) => item.id !== id);
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleSubmit = (e) => {
